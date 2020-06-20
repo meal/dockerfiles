@@ -5,8 +5,7 @@
 
 .PHONY: build
 build:
-
-@$(CURDIR)/build-all.sh
+	@$(CURDIR)/build-all.sh
 
 .PHONY: latest-versions
 latest-versions:
@@ -27,11 +26,12 @@ run: ## Run a Dockerfile from the command at the top of the file (ex. DIR=telnet
 
 
 REGISTRY := hub.docker.com
+REPO_PREFIX := mkozak
 
 .PHONY: image
 image: ## Build a Dockerfile (ex. DIR=telnet).
 	@:$(call check_defined, DIR, directory of the Dockefile)
-	docker build --rm --force-rm -t $(REGISTRY)/$(subst /,:,$(patsubst %/,%,$(DIR))) ./$(DIR)
+	docker build --rm --force-rm -t $(REGISTRY)/$(REPO_PREFIX)/$(subst /,:,$(patsubst %/,%,$(DIR))) ./$(DIR)
 
 .PHONY: test
 test: dockerfiles shellcheck ## Runs the tests on the repository.
