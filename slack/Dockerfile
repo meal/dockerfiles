@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM debian:bullseye-slim
 LABEL maintainer "Matt Kozak <mateusz@mkozak.pl>"
 
 ENV LC_ALL en_US.UTF-8
