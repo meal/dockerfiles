@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 LABEL maintainer "Matt Kozak <matt@mkozak.pl>"
 
