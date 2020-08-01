@@ -10,7 +10,7 @@ RUN set -xe \
                           build-base \
                           curl \
                           nodejs \
-                          python \
+                          python3 \
                           libmnl \
                           libmnl-dev \
                           libuuid \

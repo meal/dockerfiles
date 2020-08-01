@@ -1,4 +1,4 @@
-FROM kalilinux/kali
+FROM kalilinux/kali-rolling
 LABEL maintainer "Matt Kozak <matt@mkozak.pl>"
 RUN apt-get update && apt-get -yu dist-upgrade -y
 WORKDIR /rapidscan
@@ -12,7 +12,6 @@ RUN apt-get install -y \
   sslyze \
   dnsenum \
   wafw00f \
-  golismero \
   dirb \
   host \
   lbd \

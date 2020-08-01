@@ -37,6 +37,7 @@ RUN apt-get update && apt-get install -y \
 	dirmngr \
   libcap2 \
 	gnupg \
+  logrotate \
 	--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -89,7 +90,7 @@ RUN apt-get update && apt-get install -y \
 
 # unifi version
 # From: https://www.ubnt.com/download/unifi/
-ENV UNIFI_VERSION "5.12.66"
+ENV UNIFI_VERSION "5.13.32"
 
 # install unifi
 RUN apt-get update && apt-get install -y \

@@ -1,7 +1,7 @@
 FROM alpine-arm
 LABEL maintainer="mateusz@mkozak.pl"
 
-ENV NETDATA_VERSION 1.21.1
+ENV NETDATA_VERSION 1.23.2
 
 RUN set -xe \
     && apk add --no-cache autoconf \
@@ -10,7 +10,7 @@ RUN set -xe \
                           build-base \
                           curl \
                           nodejs \
-                          python \
+                          python3 \
                           libmnl \
                           libmnl-dev \
                           libuuid \
