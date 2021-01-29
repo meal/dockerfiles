@@ -34,6 +34,8 @@ RUN apt-get update && apt-get install -y \
 	libxcb-image0 \
 	libxcb-keysyms1 \
 	libxcb-xtest0 \
+  libxcb-xinerama0 \
+  libxkbcommon-x11-0 \
 	libxtst6 \
 	libnss3 \
 	libxss1 \
