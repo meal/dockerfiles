@@ -1,3 +1,15 @@
+# Run spotify in a container
+#
+# docker run -d \
+#	-v /etc/localtime:/etc/localtime:ro \
+#	-v /tmp/.X11-unix:/tmp/.X11-unix \
+#	-e DISPLAY=unix$DISPLAY \
+#	--device /dev/snd \
+#	-v $HOME/.spotify/config:/home/spotify/.config \
+#	-v $HOME/.spotify/cache:/home/spotify/spotify \
+#	--name spotify \
+#	mkozak/spotify
+
 FROM debian:bullseye-slim
 LABEL maintainer "Matt Kozak <mateusz@mkozak.pl>"
 
@@ -5,7 +17,7 @@ RUN	apt-get update && apt-get install -y \
 	dirmngr \
 	gnupg \
 	--no-install-recommends \
-	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4773BD5E130D1D45 \
+	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D1742AD60D811D58 \
 	&& echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list.d/spotify.list \
 	&& apt-get update && apt-get install -y \
 	alsa-utils \
@@ -17,8 +29,12 @@ RUN	apt-get update && apt-get install -y \
 	--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
+ARG HOSTUID=1000
+ARG HOSTGID=1000
+
 ENV HOME /home/spotify
-RUN useradd --create-home --home-dir $HOME spotify \
+RUN groupadd -g $HOSTGID spotify \
+  && useradd -u $HOSTUID -g $HOSTGID --create-home --home-dir $HOME spotify \
 	&& gpasswd -a spotify audio \
 	&& chown -R spotify:spotify $HOME
 

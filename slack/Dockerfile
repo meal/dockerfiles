@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:buster-slim
 LABEL maintainer "Matt Kozak <mateusz@mkozak.pl>"
 
 ENV LC_ALL en_US.UTF-8
@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	gnupg \
 	locales \
+  libappindicator3-1 \
 	--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -27,7 +28,12 @@ RUN apt-get update && apt-get -y install \
 	libx11-xcb1 \
 	libxkbfile1 \
 	slack-desktop \
+  socat \
 	--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/usr/lib/slack/slack"]
+RUN useradd -m slack
+
+USER slack
+
+ENTRYPOINT ["/usr/lib/slack/slack", "--no-sandbox"]

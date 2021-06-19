@@ -22,4 +22,4 @@ USER wireshark
 
 WORKDIR wireshark
 
-ENTRYPOINT	[ "wireshark" ]
+ENTRYPOINT  [ "wireshark" ]

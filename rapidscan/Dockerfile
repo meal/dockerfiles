@@ -1,5 +1,6 @@
 FROM kalilinux/kali-rolling
 LABEL maintainer "Matt Kozak <matt@mkozak.pl>"
+RUN echo "deb http://old.kali.org/kali sana main non-free contrib" >> ./etc/apt/sources.list
 RUN apt-get update && apt-get -yu dist-upgrade -y
 WORKDIR /rapidscan
 RUN apt-get install -y \
@@ -12,6 +13,7 @@ RUN apt-get install -y \
   sslyze \
   dnsenum \
   wafw00f \
+  golismero \
   dirb \
   host \
   lbd \

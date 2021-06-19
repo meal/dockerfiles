@@ -1,7 +1,7 @@
 FROM alpine
 LABEL maintainer="mateusz@mkozak.pl"
 
-ENV NETDATA_VERSION 1.23.2
+ENV NETDATA_VERSION 1.28.0
 
 RUN set -xe \
     && apk add --no-cache autoconf \
