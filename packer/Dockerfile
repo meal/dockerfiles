@@ -12,7 +12,7 @@ RUN	apk add --no-cache \
 	make \
 	zip
 
-ENV PACKER_VERSION v1.6.0
+ENV PACKER_VERSION v1.7.8
 
 RUN go get github.com/hashicorp/packer
 

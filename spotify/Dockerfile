@@ -17,7 +17,7 @@ RUN	apt-get update && apt-get install -y \
 	dirmngr \
 	gnupg \
 	--no-install-recommends \
-	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D1742AD60D811D58 \
+	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5E3C45D7B312C643 \
 	&& echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list.d/spotify.list \
 	&& apt-get update && apt-get install -y \
 	alsa-utils \
