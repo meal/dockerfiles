@@ -33,7 +33,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 
 # unifi version
 # From: https://www.ubnt.com/download/unifi/
-ENV UNIFI_VERSION "7.2.92"
+ENV UNIFI_VERSION "7.3.76"
 
 # install unifi and deps
 RUN apt-get update && apt-get install -y \

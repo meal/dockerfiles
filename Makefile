@@ -32,6 +32,10 @@ image: ## Build a Dockerfile (ex. DIR=telnet).
 	@:$(call check_defined, DIR, directory of the Dockefile)
 	docker build --rm --force-rm -t $(REPO_PREFIX)/$(subst /,:,$(patsubst %/,%,$(DIR))) ./$(DIR)
 
+.PHONY: build-and-push
+build-and-push: image
+	docker push $(REPO_PREFIX)/$(DIR)
+
 .PHONY: test
 test: dockerfiles shellcheck ## Runs the tests on the repository.
 

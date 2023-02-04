@@ -12,9 +12,9 @@ RUN	apk add --no-cache \
 	make \
 	zip
 
-ENV PACKER_VERSION v1.7.8
+ENV PACKER_VERSION v1.8.5
 
-RUN go get github.com/hashicorp/packer
+RUN go install github.com/hashicorp/packer@${PACKER_VERSION}
 
 WORKDIR /go/src/github.com/hashicorp/packer
 

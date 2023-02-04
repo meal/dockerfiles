@@ -1,0 +1,5 @@
+[
+{"target":"http://mkozak.pl","http_status":301,"request_config":{"headers":{"User-Agent":"WhatWeb/0.5.5"}},"plugins":{"Country":{"string":["UNITED STATES"],"module":["US"]},"HTTPServer":{"string":["cloudflare"]},"IP":{"string":["104.21.87.71"]},"RedirectLocation":{"string":["https://mkozak.pl/"]},"Title":{"string":["301 Moved Permanently"]},"UncommonHeaders":{"string":["cf-cache-status,report-to,nel,cf-ray,alt-svc"]}}}
+,
+{"target":"https://mkozak.pl/","http_status":200,"request_config":{"headers":{"User-Agent":"WhatWeb/0.5.5"}},"plugins":{"Country":{"string":["UNITED STATES"],"module":["US"]},"HTML5":{},"HTTPServer":{"string":["cloudflare"]},"IP":{"string":["104.21.87.71"]},"JQuery":{"version":["3.5.1"]},"MetaGenerator":{"string":["Ghost 4.36"]},"Open-Graph-Protocol":{"version":["website"]},"Script":{"string":["application/ld+json"]},"Title":{"string":["Matt Kozak - entrepreneurial software developer."]},"UncommonHeaders":{"string":["cf-cache-status,expect-ct,report-to,nel,cf-ray,alt-svc"]},"X-Powered-By":{"string":["Express"]}}}
+]
