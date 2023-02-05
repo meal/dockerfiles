@@ -1,0 +1,19 @@
+[Unit]
+Description=Transmission container
+BindsTo=wireguard-client.service
+After=docker.service wireguard-client.service
+Requires=docker.service wireguard-client.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker rm transmission_run
+ExecStart=/usr/bin/docker run \
+--net=container:wireguard-client_run \
+--mount type=volume,source=transmission_config,target=/config \
+-v /mnt/downloads:/data \
+-v /etc/localtime:/etc/localtime:ro \
+--name transmission_run \
+transmission
+ExecStop=/usr/bin/docker stop transmission_run
+
+[Install]
+WantedBy=multi-user.target
