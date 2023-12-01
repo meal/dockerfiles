@@ -5,37 +5,43 @@
 #	-v /tmp/.X11-unix:/tmp/.X11-unix \
 #	-e DISPLAY=unix$DISPLAY \
 #	--device /dev/snd \
-#	-v $HOME/.spotify/config:/home/spotify/.config \
-#	-v $HOME/.spotify/cache:/home/spotify/spotify \
+#	-v $HOME/.config/spotify/config:/home/spotify/.config \
+#	-v $HOME/.config/spotify/cache:/home/spotify/spotify \
 #	--name spotify \
 #	mkozak/spotify
 
-FROM debian:bullseye-slim
+FROM debian:sid-slim
 LABEL maintainer "Matt Kozak <mateusz@mkozak.pl>"
 
-RUN	apt-get update && apt-get install -y \
+RUN	apt-get update && apt-get install --no-install-recommends --yes \
+	ca-certificates \
+	curl \
 	dirmngr \
 	gnupg \
-	--no-install-recommends \
-	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5E3C45D7B312C643 \
+	&& curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg \
 	&& echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list.d/spotify.list \
-	&& apt-get update && apt-get install -y \
+	&& apt-get update && apt-get install --no-install-recommends --yes \
 	alsa-utils \
 	libgl1-mesa-dri \
 	libgl1-mesa-glx \
 	libpulse0 \
+	libsm6 \
 	spotify-client \
 	xdg-utils \
-	--no-install-recommends \
+	fonts-droid-fallback \
+	libcanberra-gtk3-module \
+	&& apt-get remove --yes \
+	ca-certificates \
+	curl \
+	dirmngr \
+	gnupg \
+	&& apt-get autoremove --yes \
 	&& rm -rf /var/lib/apt/lists/*
 
-ARG HOSTUID=1000
-ARG HOSTGID=1000
-
 ENV HOME /home/spotify
-RUN groupadd -g $HOSTGID spotify \
-  && useradd -u $HOSTUID -g $HOSTGID --create-home --home-dir $HOME spotify \
+RUN useradd --create-home --home-dir $HOME spotify \
 	&& gpasswd -a spotify audio \
+	&& mkdir $HOME/.config $HOME/.cache \
 	&& chown -R spotify:spotify $HOME
 
 WORKDIR $HOME
