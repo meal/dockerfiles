@@ -3,7 +3,7 @@
 # docker run --net=host mkozak/aicrack-ng <command>
 # where <command> can be airmon-ng, aicrack-ng or others
 
-FROM debian:bullseye-slim
+FROM debian:sid-slim
 
 LABEL maintainer "Matt Kozak <matt@mkozak.pl>"
 

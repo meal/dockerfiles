@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:sid-slim
 LABEL maintainer "Matt Kozak <mateusz@mkozak.pl>"
 
 RUN apt-get update && apt-get install -y \
