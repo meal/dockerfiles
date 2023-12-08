@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:sid-slim
 
 LABEL maintainer "Matt Kozak <matt@mkozak.pl>"
 
@@ -35,6 +35,8 @@ RUN apt-get update && apt-get install -y \
 	libxcb-keysyms1 \
 	libxcb-xtest0 \
   libxcb-xinerama0 \
+  libxcb-cursor0 \
+  libxcb-icccm4 \
   libxkbcommon-x11-0 \
 	libxtst6 \
 	libnss3 \
